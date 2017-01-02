@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost 
+     Service="OperacionesWCF.Server.OperationsNetService" 
+     Factory="OperacionesWCF.Server.OperationsServiceHostFactory" %>
