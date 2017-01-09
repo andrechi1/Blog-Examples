@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Threading;
 using OperacionesWCF.Server;
 
 namespace OperationsWCF.Server
