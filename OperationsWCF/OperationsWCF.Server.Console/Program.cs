@@ -1,15 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
+using OperacionesWCF.Server;
 
-namespace OperationsWCF.Server.Console
+namespace OperationsWCF.Server
 {
     class Program
     {
         static void Main(string[] args)
         {
+            using (var operationsService = new OperationsServiceHost(
+                new Uri("http://localhost:9085/OperationsService.svc")))
+            {
+                operationsService.Open();
+
+                Console.ReadLine();
+            }
         }
     }
 }

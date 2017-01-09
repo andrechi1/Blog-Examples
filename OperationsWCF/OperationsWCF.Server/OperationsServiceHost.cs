@@ -1,22 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+using System.ServiceModel.Channels;
+
 
 namespace OperacionesWCF.Server
 {
     public sealed class OperationsServiceHost : ServiceHost
     {
-        public OperationsServiceHost()
+        public OperationsServiceHost(Uri baseAddresses) 
+            :this(typeof(OperationsNetService), baseAddresses)
         {
-            
         }
 
-        protected override void InitializeRuntime()
+        public OperationsServiceHost(Type serviceType, params Uri[] baseAddresses) 
+            :base(serviceType, baseAddresses)
         {
-            base.InitializeRuntime();
+            CreateBinding();
+        }
+
+        private void CreateBinding()
+        {
+            Binding binding = new BasicHttpBinding();
+
+            base.AddServiceEndpoint(typeof(IOperations), binding, string.Empty);
         }
     }
 }
