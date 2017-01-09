@@ -1,4 +1,5 @@
 ﻿using System;
+using OperacionesWCF;
 
 namespace OperationsWCF.Client
 {
@@ -13,11 +14,11 @@ namespace OperationsWCF.Client
             using (OperationsConnection connection =
                 new OperationsConnection(url))
             {
-                Console.WriteLine(connection.Channel.Echo("Hello."));
+                IOperations operations = connection.Channel;
 
-                Console.WriteLine(connection.Channel.Plus(345, 23));
-
-                Console.WriteLine(connection.Channel.Minus(433, 85));
+                Console.WriteLine(operations.Echo("Hello."));
+                Console.WriteLine(operations.Plus(345, 23));
+                Console.WriteLine(operations.Minus(433, 85));
             }
         }
     }
