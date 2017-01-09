@@ -43,8 +43,6 @@ namespace OperationsWCF.Client
             mFactory = new ChannelFactory<IOperations>(endpoint);
         }
 
-        
-
         #region IDisposable
         public void Close()
         {
