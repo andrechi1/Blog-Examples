@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PartitionEFCore.DataAccess;
 
@@ -7,27 +8,40 @@ namespace PartitionEFCore.Test
     [TestClass]
     public class PartitionDbContaxtTest
     {
-        [TestInitialize]
-        public void InitDataBase()
+        [ClassInitialize()]
+        public static async Task InitDataBase(TestContext context)
         {
             using (var db = new MyDbContext(0))
             {
-                db.Database.EnsureCreated();
+                await db.Database.EnsureCreatedAsync();
             }
         }
 
-        [TestCleanup]
-        public void DeleteDataBase()
+        [ClassCleanup]
+        public static async Task DeleteDataBase()
         {
-            using (var db = new MyDbContext(48))
+            using (var db = new MyDbContext(0))
             {
-                db.Database.EnsureDeleted();
+                await db.Database.EnsureDeletedAsync();
             }
         }
 
         [TestMethod]
         public void PartitionDbContaxtTest01()
         {
+            using (var db = new MyDbContext(1))
+            {
+                
+            }
+        }
+
+        [TestMethod]
+        public void PartitionDbContaxtTest02()
+        {
+            using (var db = new MyDbContext(2))
+            {
+
+            }
         }
     }
 }
