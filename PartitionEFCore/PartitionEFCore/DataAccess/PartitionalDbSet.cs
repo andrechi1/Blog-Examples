@@ -20,9 +20,6 @@ namespace PartitionEFCore.DataAccess
             IQueryable<TEntity>, IAsyncEnumerableAccessor<TEntity>, IInfrastructure<IServiceProvider>
         where TEntity : class
     {
-
-        private const string mPartitionField = "IdPartition";
-
         private readonly TIdPartition mIdPartition;
 
         private readonly DbSet<TEntity> mDbSetBase;
@@ -109,7 +106,7 @@ namespace PartitionEFCore.DataAccess
 
                 TIdPartition idPartition = mIdPartition;
 
-                Expression<Func<TEntity, bool>> expresionFuncFilter = b => EF.Property<TIdPartition>(b, mPartitionField).Equals(idPartition);
+                Expression<Func<TEntity, bool>> expresionFuncFilter = b => EF.Property<TIdPartition>(b, "IdPartition").Equals(idPartition);
 
                 IQueryable<TEntity> source = null;
                 Expression<Func<TEntity, bool>> predicate = null;
