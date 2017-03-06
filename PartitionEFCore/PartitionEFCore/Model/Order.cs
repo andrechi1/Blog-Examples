@@ -6,7 +6,7 @@ namespace PartitionEFCore.Model
 {
     public class Order
     {
-        public Guid IdOrder { get; set; }
+        public Guid IdOrder { get; set; } = Guid.NewGuid();
 
         public string OrderName { get; set; }
 

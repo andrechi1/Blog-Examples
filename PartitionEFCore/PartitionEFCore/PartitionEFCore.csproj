@@ -39,6 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\MyDbContext.cs" />
+    <Compile Include="DataAccess\PartitionalDbSet.cs" />
+    <Compile Include="DataAccess\PartitionValueGenerator.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
